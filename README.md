@@ -1,21 +1,19 @@
-# my-project
+# 旅游项目
 
-> A Vue.js project
-
-## Build Setup
+> 一个关于旅游的移动端项目
+## 项目使用
 
 ``` bash
-# install dependencies
-npm install
+# clone项目
+下载全部依赖：npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# 端口号 8080
+启动项目：npm run dev
 
-# build for production with minification
+# 项目打包
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 说明：
+自己练手项目
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
