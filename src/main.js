@@ -7,11 +7,15 @@ import router from './router'
 import './assets/styles/reset.css'//重置css样式文件,之前引用的写法
 import 'styles/border.css'//1px边框问题
 import 'styles/iconfont.css'//引入iconfont图标
+
+
 import fastClick from 'fastclick'//解决点击300毫秒延时的问题
+import VueAwesomeSwiper from 'vue-awesome-swiper'//轮播库
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false;
 fastClick.attach(document.body);//引入300毫秒延时
-
+Vue.use(VueAwesomeSwiper)//声明使用swiper库
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
