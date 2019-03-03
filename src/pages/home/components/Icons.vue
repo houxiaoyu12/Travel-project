@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-      <swiper>
+      <swiper :options="swiperOption">
 
         <swiper-slide v-for="(page,index) of pages" :key="index">
           <div class="icon" v-for="item of page" :key="item.id">
@@ -17,7 +17,17 @@
 <script>
     export default {
       name: "HomeIcons",
-      data() {
+      props: {
+        list: Array,
+      },
+      data () {
+        return {
+          swiperOption () {
+            autoplay: false
+          }
+        }
+      },
+      /*data() {//测试时模拟的数据
           return {
             iconList: [
               {
@@ -77,11 +87,11 @@
               }
             ]
           }
-      },
+      },*/
       computed: {
         pages () {//轮播分页数组
-          const pages = [];//定义一个空数组，循环每一项
-          this.iconList.forEach((item,index) => {
+          const pages = [];//定义一个空数组，循环每一页，一页中有8项数据
+          this.list.forEach((item,index) => {
             const page = Math.floor(index / 8);//循环每一项，小于8将其放在一个页面上，大于8放到第二个页面上
             if(!pages[page]){//如果数组的第一项没有在数组中，创建一个数组，存放8项，大于8项放到第二页，二维数组
               pages[page] = []

@@ -1,24 +1,28 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
-      <swiper-slide  v-for="item of swiperList" :key="item.id">
+    <!--解决初次轮播图显示是最后一张，因为初始list中没有数据，当list中没数据的时候，才让显示（v-if=list.length）-->
+    <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide  v-for="item of list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
 
-      <div class="swiper-pagination"  slot="pagination"></div>
+      //<div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
 <script>
     export default {
         name: "HomeSwiper",
+        props: {
+          list: Array
+        },
         data() {
             return {
               swiperOption: {
                 pagination: '.swiper-pagination',
                 loop: true
               },
-              swiperList: [//vue中引入本地图片 要用require的方式
+              /*swiperList: [//vue中引入本地图片 要用require的方式
                 {
                   id: '0001',
                   imgUrl: require("../../../assets/img/1.jpg")
@@ -31,7 +35,12 @@
                   id: '0003',
                   imgUrl: require("../../../assets/img/3.jpg")
                 }
-              ]
+              ]*/
+            }
+        },
+        computed: {
+            showSwiper () {
+              return this.list.length;
             }
         }
     }
