@@ -22,8 +22,8 @@
       },
       data () {
         return {
-          swiperOption () {
-            autoplay: false
+          swiperOption: {
+            autoplay : false,
           }
         }
       },
