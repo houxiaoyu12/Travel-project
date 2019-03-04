@@ -33,11 +33,15 @@
         data() {
             return {
                 touchStartus: false,
-
+                startY: 0,
+                timer: null,//数据节流的时候用，性能优化
             }
         },
+        updated () {
+            this.startY = this.$refs['A'][0].offsetTop;//当数据加载完事后，执行此命令，再取值，提高性能
+        },
         methods: {
-            handleLetterClick (e) {
+            handleLetterClick (e) {//向父组件中传入你点击的字母，父组件再传给子组件
                 this.$emit('change',e.target.innerText);
                 //console.log(e.target.innerText)
             },
@@ -46,13 +50,18 @@
             },
             handleTouchMove (e) {
                 if(this.touchStartus){
-                    const startY = this.$refs['A'][0].offsetTop;//A到输入框下沿的距离
-                    const touchY = e.touches[0].clientY - 79;//手指到输入框下沿的距离
-                    const index = Math.floor((touchY - startY) / 20);
-                    if(index >= 0 && index <this.letters.length){
-                        this.$emit('change',this.letters[index]);
+                    if(this.timer){//函数节流
+                        clearTimeout(this.timer)
                     }
-                    //console.log(index)
+                    this.timer = setTimeout(() => {//函数节流
+                        //const startY = this.$refs['A'][0].offsetTop;//A到输入框下沿的距离
+                        const touchY = e.touches[0].clientY - 79;//手指到输入框下沿的距离
+                        const index = Math.floor((touchY - this.startY) / 20);
+                        if(index >= 0 && index <this.letters.length){
+                            this.$emit('change',this.letters[index]);
+                        }
+                        //console.log(index)
+                    },16);
                 }
             },
             handleTouchEnd () {
