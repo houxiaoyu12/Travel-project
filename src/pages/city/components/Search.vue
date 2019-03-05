@@ -13,6 +13,7 @@
                     class="search-item "
                     v-for="item of list"
                     :key="item.id"
+                    @click="handleCityClick(item.name)"
                 >
                     {{item.name}}
                 </li>
@@ -68,6 +69,12 @@
                     //console.log(this.list)
                 },100);
 
+            }
+        },
+        methods: {
+            handleCityClick (city) {
+                this.$store.commit('changeCity',city);//可以直接通过commit调用mutations,不用dispatch
+                this.$router.push('/');//跳回到首页
             }
         },
         mounted () {

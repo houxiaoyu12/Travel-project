@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'//引入vuex中的store
 
 //自己在webpack.base中resolve中修改了配置项，所以下面的引用方式有点改变
 import './assets/styles/reset.css'//重置css样式文件,之前引用的写法
@@ -15,11 +16,12 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false;
 fastClick.attach(document.body);//引入300毫秒延时
-Vue.use(VueAwesomeSwiper)//声明使用swiper库
+Vue.use(VueAwesomeSwiper);//声明使用swiper库
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
 });
