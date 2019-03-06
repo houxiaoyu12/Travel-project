@@ -32,6 +32,7 @@
         },
         methods: {
             handleScroll () {//处理详情页面头部显示隐藏的渐变效果
+                //console.log('scroll');
                 const top = document.documentElement.scrollTop;
                 if (top > 60) {
                     let opacity = top / 140;
@@ -45,9 +46,12 @@
                 }
             }
         },
-        activated () {
+        activated () {//页面重新显示的时候
             window.addEventListener('scroll',this.handleScroll)
         },
+        deactivated () {//页面被替换成新的压面的时候
+            window.removeEventListener('scroll',this.handleScroll)//解绑
+        }
     }
 </script>
 <style lang="stylus" scoped>
