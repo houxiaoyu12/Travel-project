@@ -70,6 +70,7 @@
             color: #fff
             font-weight: bold
     .header-fixed
+        z-index: 5
         position: fixed
         top: 0
         left: 0
