@@ -11,18 +11,20 @@
                 </div>
             </div>
         </div>
-        <common-gallary
-            :imgs="bannerImgs"
-            v-show="showGallary"
-            @close="handleGallaryClose"
-        >
-
-        </common-gallary>
+        <fade-animation>
+            <common-gallary
+                :imgs="bannerImgs"
+                v-show="showGallary"
+                @close="handleGallaryClose"
+            >
+            </common-gallary>
+        </fade-animation>
     </div>
 
 </template>
 <script>
     import CommonGallary from '@/common/gallary/Gallary'
+    import FadeAnimation from '@/common/fade/FadeAnimation.vue'
 
     export default {
         name: 'DetailBanner',
@@ -51,6 +53,7 @@
         },
         components: {
             CommonGallary,//画廊公共组件
+            FadeAnimation,//动画组件
         }
     }
 </script>
