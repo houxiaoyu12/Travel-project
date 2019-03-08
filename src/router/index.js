@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages/home/Home'
+/*import Home from '@/pages/home/Home'
 import City from '@/pages/city/City'
-import Detail from '@/pages/detail/Detail'
+import Detail from '@/pages/detail/Detail'*/
+//使用按需加载的方式
 
 Vue.use(Router);
 
@@ -11,17 +12,17 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: () => import('@/pages/home/Home')
     },
     {
       path: '/city',
       name: 'City',
-      component: City
+      component: () => import('@/pages/city/City')
     },
     {
       path: '/detail/:id',
       name: 'Detail',
-      component: Detail
+      component: () => import('@/pages/detail/Detail')
     },
   ],
   scrollBehavior (to, from, savedPosition) {//每次做页面切换的时候，每次回到页面最顶部

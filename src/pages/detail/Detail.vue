@@ -80,12 +80,15 @@
                     this.categoryList = data.categoryList;
                     this.bannerImg = data.bannerImg;
                     this.gallaryImgs = data.gallaryImgs;
-                    console.log(data)
+                    //console.log(data)
                 }
             }
          },
         mounted () {
            this.getDetailInfo()
+        },
+        activated () {
+            this.getDetailInfo()
         },
         components: {
             DetailBanner,
