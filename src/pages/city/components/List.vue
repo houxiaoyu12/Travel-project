@@ -63,6 +63,7 @@
             ...mapMutations(['changeCity'])
         },
         computed: {
+
             ...mapState({
                 currentCity: 'city'//将vuex中的city隐射到computed上，且名字叫currentCity
             })
